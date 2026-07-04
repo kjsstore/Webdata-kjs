@@ -36,8 +36,7 @@
             --btn-mode-border: #2a2a2a;
             --scrollbar-track: #1a1a1a;
             --scrollbar-thumb: #3b82f6;
-            --transition-speed: 0.4s;
-            /* --- New VVIP Glow & Emboss --- */
+            --transition-speed: 0.2s;
             --vvip-glow: 0 8px 32px rgba(59, 130, 246, 0.3);
             --vvip-emboss-light: #2a2a2a;
             --vvip-emboss-dark: #0a0a0a;
@@ -259,27 +258,24 @@
         }
 
         /* ============================================================
-               VVIP EMBOSS & GLOW STYLES
+               LOGO PNG GANTI JUDUL CARD
             ============================================================ */
-
-        /* --- LOGO (kotak agak bulat & menonjol) --- */
-        .logo-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        .logo-card-img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: contain;
+            background: transparent;
+            display: block;
+            border-radius: 12px 12px 0 0;
+            padding: 8px;
         }
-        .logo-box {
+
+        .logo-box img {
             width: 48px;
             height: 48px;
+            object-fit: contain;
             border-radius: 18px;
-            /* agak bulat */
             background: linear-gradient(145deg, #1e293b, #0f172a);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            font-weight: 900;
-            color: #3b82f6;
             box-shadow:
                 6px 6px 12px rgba(0, 0, 0, 0.7),
                 -4px -4px 10px rgba(255, 255, 255, 0.05),
@@ -288,41 +284,23 @@
             border: 1px solid rgba(59, 130, 246, 0.2);
             transition: all 0.3s ease;
             flex-shrink: 0;
-            position: relative;
-            text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+            padding: 8px;
         }
-        [data-theme="light"] .logo-box {
+        [data-theme="light"] .logo-box img {
             background: linear-gradient(145deg, #e2e8f0, #cbd5e1);
             box-shadow:
                 6px 6px 12px rgba(0, 0, 0, 0.1),
                 -4px -4px 10px rgba(255, 255, 255, 0.8),
                 inset 2px 2px 4px rgba(255, 255, 255, 0.8),
                 inset -3px -3px 6px rgba(0, 0, 0, 0.05);
-            color: #2563eb;
-        }
-        .logo-box i {
-            filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.4));
-        }
-        /* efek kilau */
-        .logo-box::after {
-            content: '';
-            position: absolute;
-            top: -8px;
-            left: -8px;
-            right: -8px;
-            bottom: -8px;
-            border-radius: 22px;
-            background: radial-gradient(circle at 30% 20%, rgba(59, 130, 246, 0.15), transparent 70%);
-            pointer-events: none;
-            z-index: -1;
         }
 
-        /* --- CARD --- */
+        /* --- CARD dengan judul logo --- */
         .product-card {
             background: var(--card-bg);
             border-radius: 18px;
             overflow: hidden;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             border: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
@@ -331,6 +309,7 @@
                 -4px -4px 12px rgba(255, 255, 255, 0.03),
                 inset 1px 1px 2px rgba(255, 255, 255, 0.05);
             position: relative;
+            will-change: transform, box-shadow;
         }
         [data-theme="light"] .product-card {
             box-shadow:
@@ -386,7 +365,7 @@
                 -4px -4px 12px rgba(255, 255, 255, 0.8);
         }
 
-        /* --- BUTTONS (VVIP Emboss) --- */
+        /* --- BUTTONS (lebih ringan) --- */
         .btn-troli-dark,
         .btn-beli-dark,
         .btn-detail-dark,
@@ -394,12 +373,12 @@
         .btn-mode,
         .btn-checkout-dropdown,
         .btn-refresh {
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.15s ease;
             position: relative;
             touch-action: manipulation;
+            will-change: transform;
         }
 
-        /* TOMBOL UTAMA: Troli, Beli, Checkout */
         .btn-troli-dark {
             background: linear-gradient(145deg, #2563eb, #1d4ed8);
             color: white;
@@ -431,38 +410,13 @@
                 inset -3px -3px 6px rgba(0, 0, 0, 0.05);
         }
         .btn-troli-dark:hover {
-            transform: translateY(-2px);
-            box-shadow:
-                6px 6px 20px rgba(59, 130, 246, 0.4),
-                -2px -2px 8px rgba(255, 255, 255, 0.05),
-                inset 2px 2px 4px rgba(255, 255, 255, 0.2),
-                inset -3px -3px 6px rgba(0, 0, 0, 0.4);
-        }
-        [data-theme="light"] .btn-troli-dark:hover {
-            box-shadow:
-                6px 6px 20px rgba(59, 130, 246, 0.2),
-                -2px -2px 8px rgba(255, 255, 255, 0.9),
-                inset 2px 2px 4px rgba(255, 255, 255, 0.8);
+            transform: translateY(-1px);
         }
         .btn-troli-dark:active {
-            transform: scale(0.94);
-            box-shadow:
-                inset 4px 4px 10px rgba(0, 0, 0, 0.6),
-                inset -2px -2px 6px rgba(255, 255, 255, 0.05);
+            transform: scale(0.96);
         }
         .btn-troli-dark.in-cart {
             background: linear-gradient(145deg, #f59e0b, #d97706);
-            box-shadow:
-                4px 4px 12px rgba(0, 0, 0, 0.5),
-                -2px -2px 8px rgba(255, 255, 255, 0.05),
-                inset 2px 2px 4px rgba(255, 255, 255, 0.2),
-                inset -3px -3px 6px rgba(0, 0, 0, 0.4);
-        }
-        [data-theme="light"] .btn-troli-dark.in-cart {
-            box-shadow:
-                4px 4px 12px rgba(0, 0, 0, 0.08),
-                -2px -2px 8px rgba(255, 255, 255, 0.9),
-                inset 2px 2px 4px rgba(255, 255, 255, 0.8);
         }
 
         .btn-beli-dark {
@@ -496,24 +450,10 @@
                 inset -3px -3px 6px rgba(0, 0, 0, 0.05);
         }
         .btn-beli-dark:hover {
-            transform: translateY(-2px);
-            box-shadow:
-                6px 6px 20px rgba(37, 211, 102, 0.4),
-                -2px -2px 8px rgba(255, 255, 255, 0.05),
-                inset 2px 2px 4px rgba(255, 255, 255, 0.15),
-                inset -3px -3px 6px rgba(0, 0, 0, 0.4);
-        }
-        [data-theme="light"] .btn-beli-dark:hover {
-            box-shadow:
-                6px 6px 20px rgba(37, 211, 102, 0.2),
-                -2px -2px 8px rgba(255, 255, 255, 0.9),
-                inset 2px 2px 4px rgba(255, 255, 255, 0.8);
+            transform: translateY(-1px);
         }
         .btn-beli-dark:active {
-            transform: scale(0.94);
-            box-shadow:
-                inset 4px 4px 10px rgba(0, 0, 0, 0.6),
-                inset -2px -2px 6px rgba(255, 255, 255, 0.05);
+            transform: scale(0.96);
         }
 
         .btn-detail-dark {
@@ -543,20 +483,9 @@
         .btn-detail-dark:hover {
             border-color: #3b82f6;
             color: #3b82f6;
-            transform: translateY(-1px);
-            box-shadow:
-                4px 4px 14px rgba(59, 130, 246, 0.15),
-                -2px -2px 6px rgba(255, 255, 255, 0.03);
-        }
-        [data-theme="light"] .btn-detail-dark:hover {
-            box-shadow:
-                4px 4px 14px rgba(59, 130, 246, 0.08),
-                -2px -2px 6px rgba(255, 255, 255, 0.8);
         }
         .btn-detail-dark:active {
-            transform: scale(0.94);
-            box-shadow:
-                inset 3px 3px 8px rgba(0, 0, 0, 0.2);
+            transform: scale(0.96);
         }
 
         /* NAV ICON TROLI */
@@ -572,6 +501,7 @@
             font-size: 18px;
             cursor: pointer;
             border: none;
+            position: relative;
             box-shadow:
                 4px 4px 14px rgba(0, 0, 0, 0.6),
                 -2px -2px 8px rgba(255, 255, 255, 0.05),
@@ -587,24 +517,10 @@
                 inset -3px -3px 6px rgba(0, 0, 0, 0.05);
         }
         .troli-icon-nav:hover {
-            transform: translateY(-2px);
-            box-shadow:
-                6px 6px 24px rgba(59, 130, 246, 0.4),
-                -2px -2px 8px rgba(255, 255, 255, 0.05),
-                inset 2px 2px 4px rgba(255, 255, 255, 0.2),
-                inset -3px -3px 6px rgba(0, 0, 0, 0.5);
-        }
-        [data-theme="light"] .troli-icon-nav:hover {
-            box-shadow:
-                6px 6px 24px rgba(59, 130, 246, 0.15),
-                -2px -2px 8px rgba(255, 255, 255, 0.9),
-                inset 2px 2px 4px rgba(255, 255, 255, 0.8);
+            transform: translateY(-1px);
         }
         .troli-icon-nav:active {
-            transform: scale(0.92);
-            box-shadow:
-                inset 4px 4px 12px rgba(0, 0, 0, 0.6),
-                inset -2px -2px 6px rgba(255, 255, 255, 0.05);
+            transform: scale(0.94);
         }
         .troli-icon-nav .badge-troli-nav {
             position: absolute;
@@ -625,7 +541,6 @@
             border: 2px solid var(--bg-nav);
         }
 
-        /* MODE BUTTONS (LASIK / JMO) */
         .btn-mode {
             background: var(--btn-mode-bg);
             border: 2px solid var(--btn-mode-border);
@@ -654,52 +569,24 @@
                 inset 1px 1px 2px rgba(255, 255, 255, 0.8);
         }
         .btn-mode:hover {
-            transform: translateY(-2px);
+            transform: translateY(-1px);
             border-color: var(--text-secondary);
             color: var(--text-primary);
         }
         .btn-mode:active {
-            transform: scale(0.94);
-            box-shadow:
-                inset 4px 4px 12px rgba(0, 0, 0, 0.5),
-                inset -2px -2px 6px rgba(255, 255, 255, 0.03);
+            transform: scale(0.96);
         }
         .btn-mode.active-lasik {
             border-color: #8b5cf6;
             background: rgba(139, 92, 246, 0.15);
             color: #a78bfa;
-            box-shadow:
-                0 0 30px rgba(139, 92, 246, 0.15),
-                4px 4px 14px rgba(0, 0, 0, 0.4),
-                -2px -2px 8px rgba(255, 255, 255, 0.03),
-                inset 1px 1px 2px rgba(255, 255, 255, 0.05);
-        }
-        [data-theme="light"] .btn-mode.active-lasik {
-            background: rgba(139, 92, 246, 0.08);
-            box-shadow:
-                0 0 30px rgba(139, 92, 246, 0.08),
-                4px 4px 14px rgba(0, 0, 0, 0.04),
-                -2px -2px 8px rgba(255, 255, 255, 0.8);
         }
         .btn-mode.active-jmo {
             border-color: #10b981;
             background: rgba(16, 185, 129, 0.15);
             color: #34d399;
-            box-shadow:
-                0 0 30px rgba(16, 185, 129, 0.15),
-                4px 4px 14px rgba(0, 0, 0, 0.4),
-                -2px -2px 8px rgba(255, 255, 255, 0.03),
-                inset 1px 1px 2px rgba(255, 255, 255, 0.05);
-        }
-        [data-theme="light"] .btn-mode.active-jmo {
-            background: rgba(16, 185, 129, 0.08);
-            box-shadow:
-                0 0 30px rgba(16, 185, 129, 0.08),
-                4px 4px 14px rgba(0, 0, 0, 0.04),
-                -2px -2px 8px rgba(255, 255, 255, 0.8);
         }
 
-        /* CHECKOUT DROPDOWN */
         .btn-checkout-dropdown {
             background: linear-gradient(145deg, #1da851, #15803d);
             color: white;
@@ -731,30 +618,15 @@
                 inset -3px -3px 6px rgba(0, 0, 0, 0.05);
         }
         .btn-checkout-dropdown:hover {
-            transform: translateY(-2px);
-            box-shadow:
-                6px 6px 24px rgba(37, 211, 102, 0.4),
-                -2px -2px 8px rgba(255, 255, 255, 0.05),
-                inset 2px 2px 4px rgba(255, 255, 255, 0.15),
-                inset -3px -3px 6px rgba(0, 0, 0, 0.4);
-        }
-        [data-theme="light"] .btn-checkout-dropdown:hover {
-            box-shadow:
-                6px 6px 24px rgba(37, 211, 102, 0.15),
-                -2px -2px 8px rgba(255, 255, 255, 0.9),
-                inset 2px 2px 4px rgba(255, 255, 255, 0.8);
+            transform: translateY(-1px);
         }
         .btn-checkout-dropdown:active {
-            transform: scale(0.94);
-            box-shadow:
-                inset 4px 4px 12px rgba(0, 0, 0, 0.6),
-                inset -2px -2px 6px rgba(255, 255, 255, 0.05);
+            transform: scale(0.96);
         }
         .btn-checkout-dropdown.show {
             display: flex;
         }
 
-        /* REFRESH BUTTON */
         .btn-refresh {
             background: var(--bg-card2);
             border: 1px solid var(--border-color);
@@ -778,16 +650,13 @@
         .btn-refresh:hover {
             border-color: #3b82f6;
             color: #3b82f6;
-            transform: translateY(-1px);
         }
         .btn-refresh:active {
-            transform: scale(0.94);
-            box-shadow:
-                inset 3px 3px 8px rgba(0, 0, 0, 0.2);
+            transform: scale(0.96);
         }
 
         /* ============================================================
-               Lainnya (tetap seperti sebelumnya)
+               Lainnya (tetap)
             ============================================================ */
 
         .product-grid {
@@ -1555,7 +1424,6 @@
             display: none !important;
         }
 
-        /* Loading state tetap */
         .btn-mode.loading {
             pointer-events: none;
             opacity: 0.8;
@@ -1579,6 +1447,35 @@
         }
         .btn-mode.loading .mode-text {
             opacity: 0.5;
+        }
+
+        /* Gambar logo di card - ganti judul */
+        .card-logo-img {
+            width: 100%;
+            max-height: 180px;
+            object-fit: contain;
+            background: transparent;
+            display: block;
+            padding: 8px 8px 4px 8px;
+            border-radius: 16px 16px 0 0;
+        }
+        /* fallback jika logo.png tidak ada */
+        .card-logo-fallback {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 8px 8px 8px;
+            background: var(--bg-card2);
+            border-radius: 16px 16px 0 0;
+            color: var(--text-muted);
+            font-size: 12px;
+            font-weight: 600;
+            gap: 8px;
+            min-height: 60px;
+        }
+        .card-logo-fallback i {
+            font-size: 24px;
+            color: #3b82f6;
         }
     </style>
 </head>
@@ -1623,12 +1520,11 @@
         </div>
     </div>
 
-    <!-- NAV dengan LOGO VVIP -->
+    <!-- NAV dengan LOGO VVIP (logo.png) -->
     <div class="nav-mobile">
         <div class="logo-wrapper">
-            <!-- Logo kotak agak bulat & menonjol -->
             <div class="logo-box">
-                <i class="fa-solid fa-cart-shopping"></i>
+                <img src="logo.png" alt="Logo" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fa-solid fa-cart-shopping\'></i>'" />
             </div>
             <div>
                 <div class="logo-text glow-text">TROLI<span>DATA</span></div>
@@ -1761,7 +1657,7 @@
 
     <script>
         // ============================================================
-        // THEME TOGGLE (sama seperti sebelumnya)
+        // THEME TOGGLE
         // ============================================================
         function toggleTheme() {
             const html = document.getElementById('htmlRoot');
@@ -1769,7 +1665,6 @@
             const newTheme = current === 'light' ? 'dark' : 'light';
             html.setAttribute('data-theme', newTheme);
             localStorage.setItem('kjs_theme', newTheme);
-
             try {
                 const audioCtx = new(window.AudioContext || window.webkitAudioContext)();
                 const osc = audioCtx.createOscillator();
@@ -1796,13 +1691,14 @@
         })();
 
         // ============================================================
-        // MAIN APP (sama seperti sebelumnya, hanya UI yang diubah)
+        // MAIN APP (dioptimasi)
         // ============================================================
         (function() {
             let allDataStore = [];
             let cartItems = [];
             let currentMode = null;
             let isDataLoaded = false;
+            let renderTimeout = null;
             const CART_KEY = 'kjs_cart_items';
             const FILES = {
                 lasik: 'data-lasik.xlsx',
@@ -1937,7 +1833,6 @@
             function formatTanggalLahir(raw) {
                 if (!raw) return '-';
                 const str = String(raw).trim();
-
                 let match = str.match(/(\d{1,2})[\-\/](\d{1,2})[\-\/](\d{2,4})/);
                 if (match) {
                     let day = match[1].padStart(2, '0');
@@ -1946,7 +1841,6 @@
                     if (year.length === 2) year = '19' + year;
                     return `${day}-${month}-${year}`;
                 }
-
                 match = str.match(/(\d{4})[\-\/](\d{1,2})[\-\/](\d{1,2})/);
                 if (match) {
                     let year = match[1];
@@ -1954,7 +1848,6 @@
                     let day = match[3].padStart(2, '0');
                     return `${day}-${month}-${year}`;
                 }
-
                 const bulanMap = {
                     'jan': '01',
                     'feb': '02',
@@ -1991,7 +1884,6 @@
                         return `${day}-${val}-${year}`;
                     }
                 }
-
                 const angka = str.match(/\d+/g);
                 if (angka && angka.length >= 3) {
                     let day = angka[0].padStart(2, '0');
@@ -2002,51 +1894,40 @@
                         return `${day}-${month}-${year}`;
                     }
                 }
-
                 return str;
             }
 
             function parseExcelData(rows, source) {
                 const parsed = [];
                 const seen = new Set();
-
                 rows.forEach((row, index) => {
                     const nama = String(row.Nama || row.NAMA || '').trim();
                     if (!nama || nama === '' || nama.toUpperCase() === 'NAMA') return;
-
                     const prefix = source === 'lasik' ? 'LASIK' : 'JMO';
                     const jsId = `${prefix}.${String(index + 1).padStart(4, '0')}`;
-
                     let gender = String(row.JENIS_KELAMIN || row["Jenis Kelamin"] || row.JK || '').toUpperCase()
-                    .trim();
+                        .trim();
                     if (gender.startsWith('L') || gender === 'LAKI_LAKI') gender = 'LAKI-LAKI';
                     else if (gender.startsWith('P') || gender === 'PEREMPUAN') gender = 'PEREMPUAN';
                     else if (gender === 'L') gender = 'LAKI-LAKI';
                     else if (gender === 'P') gender = 'PEREMPUAN';
                     else gender = 'TIDAK DIKETAHUI';
-
                     let saldoStr = String(row["Saldo JHT"] || row.SALDO_JHT || row.Saldo || 'Rp0');
                     let saldoNum = extractSaldoFromString(saldoStr);
-
                     let nik = String(row.NIK || '').trim();
                     let sensorNik = nik.length >= 6 ? nik.substring(0, 6) + '**********' : (nik || '**********');
-
                     let kpj = String(row.KPJ || '').trim() || '-';
                     let sensorKpj = kpj.length >= 7 ? kpj.substring(0, 3) + '****' + kpj.substring(kpj.length - 4) : (
                         kpj || '****');
-
                     let ttlRaw = String(row.TTL || row.TGL_LAHIR || '').trim();
                     let ttl = formatTanggalLahir(ttlRaw);
-
                     let kota = String(row.Kota || row.KOTA || '').trim() || 'Luar Wilayah';
                     let kecamatan = String(row.Kecamatan || row.KECAMATAN || '').trim() || '-';
                     let kelurahan = String(row.Kelurahan || row.KELURAHAN || '').trim() || '-';
                     let pt = String(row.PT || row.Perusahaan || '').trim() || 'Umum/Swasta';
-
                     const key = `${nama}|${kpj}|${saldoNum}`;
                     if (seen.has(key)) return;
                     seen.add(key);
-
                     parsed.push({
                         jsId,
                         nama,
@@ -2091,21 +1972,17 @@
                 ]).then(([lasikData, jmoData]) => {
                     allDataStore = [...lasikData, ...jmoData];
                     isDataLoaded = true;
-
                     const lasikCount = lasikData.length;
                     const jmoCount = jmoData.length;
                     countLasik.textContent = lasikCount;
                     countJmo.textContent = jmoCount;
                     badgeLasik.textContent = lasikCount;
                     badgeJmo.textContent = jmoCount;
-
                     updateStats();
-
                     if (currentMode !== null) {
                         renderCards();
                         updateTroliUI();
                     }
-
                 }).catch(err => {
                     console.error('Error loading data:', err);
                 });
@@ -2116,7 +1993,6 @@
                 const totalSaldoAll = allDataStore.reduce((acc, i) => acc + i.saldoNum, 0);
                 const male = allDataStore.filter(i => i.kelamin === 'LAKI-LAKI').length;
                 const female = allDataStore.filter(i => i.kelamin === 'PEREMPUAN').length;
-
                 totalItems.textContent = allDataStore.length;
                 totalData.textContent = allDataStore.length;
                 totalPT.textContent = uniquePT;
@@ -2126,19 +2002,16 @@
 
             function setMode(mode, btnElement) {
                 playButtonSound();
-
                 if (btnElement) {
                     btnElement.classList.add('loading');
                     setTimeout(() => {
                         btnElement.classList.remove('loading');
-                    }, 500);
+                    }, 400);
                 }
-
                 currentMode = mode;
                 updateModeButtons();
                 searchInput.disabled = false;
                 sortOrder.disabled = false;
-
                 if (isDataLoaded) {
                     renderCards();
                     updateTroliUI();
@@ -2171,17 +2044,14 @@
 
             function updateTroliUI() {
                 const count = cartItems.length;
-
                 if (count > 0) {
                     troliBadgeNav.textContent = count;
                     troliBadgeNav.classList.add('show');
                 } else {
                     troliBadgeNav.classList.remove('show');
                 }
-
                 troliCountDropdown.textContent = count;
                 troliCheckoutDropdown.textContent = count;
-
                 if (count > 0) {
                     const items = allDataStore.filter(item => cartItems.includes(item.jsId));
                     let listHtml = '';
@@ -2211,7 +2081,6 @@
                 playButtonSound();
                 const item = allDataStore.find(i => i.jsId === itemId);
                 if (!item) return;
-
                 const genderLabel = item.kelamin === 'LAKI-LAKI' ? 'L' : (item.kelamin === 'PEREMPUAN' ? 'P' : '?');
                 let message = '🛒 *DATA LEADS KJS* 🛒\n';
                 message += '─ ╍ ╍ ╍ ╍ ╍ ╍ ╍ ─\n\n';
@@ -2227,7 +2096,6 @@
                 message += `▸ SENSOR    : ${item.sensor}\n`;
                 message += `▸ SALDO     : ${formatRupiah(item.saldoNum)}\n`;
                 message += '\n─ ╍ ╍ ╍ ╍ ╍ ╍ ╍ ─\n';
-
                 const encoded = encodeURIComponent(message);
                 const waUrl = `https://wa.me/6285943111681?text=${encoded}`;
                 window.open(waUrl, '_blank');
@@ -2236,13 +2104,10 @@
             function beliSemua() {
                 playButtonSound();
                 if (cartItems.length === 0) return;
-
                 const items = allDataStore.filter(item => cartItems.includes(item.jsId));
                 if (items.length === 0) return;
-
                 let message = '🛒 *DATA LEADS KJS* 🛒\n';
                 message += '─ ╍ ╍ ╍ ╍ ╍ ╍ ╍ ─\n\n';
-
                 items.forEach((item, idx) => {
                     const genderLabel = item.kelamin === 'LAKI-LAKI' ? 'L' : (item.kelamin === 'PEREMPUAN' ? 'P' :
                         '?');
@@ -2261,15 +2126,14 @@
                         message += '─ ╍ ╍ ╍ ╍ ╍ ╍ ╍ ─\n\n';
                     }
                 });
-
                 message += '\n─ ╍ ╍ ╍ ╍ ╍ ╍ ╍ ─\n';
                 message += `Total Nilai: ${formatRupiah(items.reduce((acc, i) => acc + i.saldoNum, 0))}`;
-
                 const encoded = encodeURIComponent(message);
                 const waUrl = `https://wa.me/6285943111681?text=${encoded}`;
                 window.open(waUrl, '_blank');
             }
 
+            // ===== RENDER CARD dengan LOGO di judul =====
             function renderCards() {
                 if (currentMode === null) {
                     grid.innerHTML = `
@@ -2281,7 +2145,6 @@
                     recordCount.textContent = '0';
                     return;
                 }
-
                 if (!isDataLoaded) {
                     grid.innerHTML = `
                         <div class="empty-state">
@@ -2323,6 +2186,7 @@
                     return;
                 }
 
+                // Render card dengan logo di bagian judul
                 grid.innerHTML = filtered.map(item => {
                     const genderClass = item.kelamin === 'LAKI-LAKI' ? 'gender-L-dark' : 'gender-P-dark';
                     const genderLabel = item.kelamin === 'LAKI-LAKI' ? 'L' : (item.kelamin === 'PEREMPUAN' ? 'P' :
@@ -2345,6 +2209,9 @@
 
                     return `
                     <div class="product-card ${cardClass} ${inCart ? 'in-cart' : ''}">
+                        <!-- JUDUL CARD DIGANTI DENGAN LOGO.PNG -->
+                        <img src="logo.png" alt="Logo" class="card-logo-img" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\\'card-logo-fallback\\'><i class=\\'fa-solid fa-store\\'></i> KJS STORE</div>'">
+
                         <div class="card-header-custom">
                             <div class="flex items-center gap-2">
                                 <span class="badge-id"><i class="fa-regular fa-folder-open mr-1"></i>${item.jsId}</span>
@@ -2437,8 +2304,15 @@
             window.setMode = setMode;
             window.refreshAll = refreshAll;
 
-            searchInput.addEventListener('input', renderCards);
-            sortOrder.addEventListener('change', renderCards);
+            // Event dengan debounce untuk performa
+            searchInput.addEventListener('input', function() {
+                if (renderTimeout) clearTimeout(renderTimeout);
+                renderTimeout = setTimeout(renderCards, 150);
+            });
+            sortOrder.addEventListener('change', function() {
+                if (renderTimeout) clearTimeout(renderTimeout);
+                renderTimeout = setTimeout(renderCards, 100);
+            });
 
             document.addEventListener('DOMContentLoaded', () => {
                 grid.innerHTML = `
@@ -2447,7 +2321,6 @@
                         <h4>Pilih Sumber Data</h4>
                         <p>Klik tombol LASIK atau JMO di atas untuk melihat data</p>
                     </div>`;
-
                 loadAllData();
                 setInterval(loadAllData, 300000);
                 updateTroliUI();
